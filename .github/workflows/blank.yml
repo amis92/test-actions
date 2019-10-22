@@ -22,7 +22,7 @@ jobs:
         Get-ChildItem env: | Sort-Object Name
     - name: Set cloud build vars
       run: |
-        ./nbgv cloud
+        ./nbgv cloud -a
     - name: Print github vars
       shell: pwsh
       run: |
