@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.300
+    - name: Install nbgv
+      shell: pwsh
+      run: dotnet install tool -g nbgv --version 3.1.13-beta 
+    - name: Set cloud build vars
+      run: |
+        nbgv cloud
+    - name: Print github vars
+      shell: pwsh
+      run: |
+        Get-ChildItem env: | Sort-Object Name
+        
