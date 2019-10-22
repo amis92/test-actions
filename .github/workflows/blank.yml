@@ -15,10 +15,14 @@ jobs:
         dotnet-version: 2.2.300
     - name: Install nbgv
       shell: pwsh
-      run: dotnet tool install -g nbgv --version 3.1.13-beta 
+      run: dotnet tool install --tool-path . nbgv --version 3.1.13-beta 
+    - name: Print github vars
+      shell: pwsh
+      run: |
+        Get-ChildItem env: | Sort-Object Name
     - name: Set cloud build vars
       run: |
-        nbgv cloud
+        ./nbgv cloud
     - name: Print github vars
       shell: pwsh
       run: |
