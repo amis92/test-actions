@@ -12,6 +12,9 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.300
+    - run: echo $RUNNER
+      env:
+        RUNNER: ${{ toJSON(runner) }}
     - name: Install nbgv
       shell: pwsh
       run: dotnet tool install --tool-path . nbgv --version 3.1.13-beta 
