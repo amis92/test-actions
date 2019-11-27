@@ -1,0 +1,14 @@
+name: Release
+
+on: [release]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print event
+      env:
+        JSON: ${{ toJson(github.event) }}
+      run: echo "$JSON"
