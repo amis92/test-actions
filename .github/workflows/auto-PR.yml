@@ -1,0 +1,15 @@
+name: Auto open PR
+
+on:
+  push:
+    branches-ignore: 
+      - master
+
+jobs:
+  auto-open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: "update/"
