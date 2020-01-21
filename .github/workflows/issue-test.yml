@@ -10,10 +10,10 @@ jobs:
     steps:
       - shell: pwsh
         run: |
-          $url = "https://api.github.com/repos/$repo/issues"
           $repo = "WarHub-Warden-testrepo/bsdata-json-test"
+          $url = "https://api.github.com/repos/$repo/issues"
           $body = @{
-            title = "Test issue",
+            title = "Test issue"
             body = "$env:GITHUB_ACTOR opened a new issue in test-actions."
           }
           $headers = @{ Authorization = "token ${{ secrets.GITHUB_TOKEN }}" }
