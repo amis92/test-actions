@@ -1,7 +1,7 @@
 name: issue test
 
 on:
-  issues: [create]
+  issues: [opened]
 
 jobs:
   open-new:
