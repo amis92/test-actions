@@ -1,0 +1,19 @@
+name: issue test
+
+on:
+  issues: [create]
+
+jobs:
+  open-new:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: pwsh
+        run: |
+          $url = "https://api.github.com/repos/$repo/issues"
+          $repo = "WarHub-Warden-testrepo/bsdata-json-test"
+          $body = @{
+            title = "Test issue",
+            body = "$env:GITHUB_ACTOR opened a new issue in test-actions."
+          }
+          $headers = @{ Authorization = "token ${{ secrets.GITHUB_TOKEN }}" }
+          Invoke-RestMethod $url -Method Post -Headers $headers -Body $body
