@@ -15,6 +15,6 @@ jobs:
           $body = @{
             title = "Test issue"
             body = "$env:GITHUB_ACTOR opened a new issue in test-actions."
-          }
+          } | ConvertTo-Json -Compress
           $headers = @{ Authorization = "token ${{ secrets.GITHUB_TOKEN }}" }
-          Invoke-RestMethod $url -Method Post -Headers $headers -Body $body
+          Invoke-RestMethod $url -Method Post -Headers $headers -Body $body -ContentType "application/json"
