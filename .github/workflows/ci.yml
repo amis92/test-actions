@@ -6,6 +6,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+    - shell: pwsh
+      run: |
+        $ws = $env:GITHUB_WORKSPACE
+        echo $ws
+        pushd $ws
+        ls
+        cd ..
+        ls
+        cd ..
+        ls
     - name: Print event
       env:
         JSON: ${{ toJson(github.event) }}
