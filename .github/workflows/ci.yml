@@ -12,10 +12,13 @@ jobs:
         $ws = $env:GITHUB_WORKSPACE
         echo $ws
         pushd $ws
+        echo "In: $(pwd)"
         ls
         cd ..
+        echo "In: $(pwd)"
         ls
         cd ..
+        echo "In: $(pwd)"
         ls
     - name: Print event
       env:
