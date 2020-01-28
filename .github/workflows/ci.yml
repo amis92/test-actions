@@ -10,6 +10,8 @@ jobs:
     - shell: pwsh
       run: |
         dotnet tool install wham -g
+    - shell: pwsh
+      run: wham --version
     - name: test pwsh
       shell: pwsh
       run: |
