@@ -2,7 +2,7 @@ name: Release
 
 on:
   release:
-    types: [published, created, edited, released]
+    types: [created, edited]
 
 jobs:
   build:
@@ -13,4 +13,8 @@ jobs:
     - name: Print event
       env:
         JSON: ${{ toJson(github.event) }}
+      run: echo "$JSON"
+    - name: print github context
+      env:
+        JSON: ${{ toJson(github) }}
       run: echo "$JSON"
