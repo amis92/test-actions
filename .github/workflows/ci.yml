@@ -24,6 +24,8 @@ jobs:
       shell: pwsh
       run: |
         Get-PackageProvider | Format-Table
+        Install-Package wham
+        Get-ChildItem -Recurse | % {echo $_}
     - name: Print event
       env:
         JSON: ${{ toJson(github.event) }}
