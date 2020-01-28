@@ -20,6 +20,10 @@ jobs:
         cd ..
         echo "In: $(pwd)"
         ls
+    - name: test pwsh
+      shell: pwsh
+      run: |
+        Get-PackageProvider | Format-Table
     - name: Print event
       env:
         JSON: ${{ toJson(github.event) }}
