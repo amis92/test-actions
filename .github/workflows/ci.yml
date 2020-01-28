@@ -23,10 +23,11 @@ jobs:
     - name: test pwsh
       shell: pwsh
       run: |
-        Get-PackageProvider | Format-Table
-        Get-PackageSource  | Format-Table
-        Install-Package wham
-        Get-ChildItem -Recurse | % {echo $_}
+        Write-Output "output"
+        Write-Host "host"
+        Write-Information "info"
+        Write-Warning "warning"
+        Write-Verbose "verbose"
     - name: Print event
       env:
         JSON: ${{ toJson(github.event) }}
