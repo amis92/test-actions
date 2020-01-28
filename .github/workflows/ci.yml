@@ -9,17 +9,7 @@ jobs:
     - uses: actions/checkout@v2
     - shell: pwsh
       run: |
-        $ws = $env:GITHUB_WORKSPACE
-        echo $ws
-        pushd $ws
-        echo "In: $(pwd)"
-        ls
-        cd ..
-        echo "In: $(pwd)"
-        ls
-        cd ..
-        echo "In: $(pwd)"
-        ls
+        dotnet tool install wham -g
     - name: test pwsh
       shell: pwsh
       run: |
