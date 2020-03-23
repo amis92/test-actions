@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z4P+/GOwUOJC00It7vDFExEmLOYTjApGTXcWQCJ1PC2wqtiN1m6KvGwg3Xtz6LUqxNOoC9GZ7VZE7IQAz1oQIQ==",
+  "success": true,
+  "projectFilePath": "D:\\Amadeusz\\Documents\\GitHub\\amis92\\test-actions\\src\\FooBar\\FooBar.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Amadeusz\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Amadeusz\\.nuget\\packages\\morelinq\\3.3.2\\morelinq.3.3.2.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
