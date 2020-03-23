@@ -1,26 +1,25 @@
 name: CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - shell: pwsh
-      run: |
-        dotnet tool install wham -g
-    - shell: pwsh
-      run: wham --version
-    - name: test pwsh
+
+    - name: Read .NET Core SDK version
+      id: globaljson
       shell: pwsh
-      run: |
-        Write-Output "output"
-        Write-Host "host"
-        Write-Information "info"
-        Write-Warning "warning"
-        Write-Verbose "verbose"
-    - name: Print event
-      env:
-        JSON: ${{ toJson(github.event) }}
-      run: echo "$JSON"
+      run: Write-Host "::set-output name=version::$((Get-Content global.json -Raw | ConvertFrom-Json).sdk.version)"
+
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ steps.globaljson.outputs.version }}
+      
+    - run: dotnet --info
+    - run: dotnet restore -v m
+    - run: dotnet build --no-restore -c Release
