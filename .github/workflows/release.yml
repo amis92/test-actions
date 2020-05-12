@@ -12,6 +12,10 @@ jobs:
       env:
         JSON: ${{ toJson(github.event) }}
       run: echo "$JSON"
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - run: git status
     - name: print github context
       env:
         JSON: ${{ toJson(github) }}
