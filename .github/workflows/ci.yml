@@ -26,5 +26,5 @@ jobs:
         $ghp = "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json".ToLower()
         dotnet nuget add source $ghp -n github -u ${{ github.actor }} -p ${{ github.token }} --store-password-in-clear-text
         Get-ChildItem ~/* -Recurse -Force -ErrorAction:Continue | ? Name -IMatch '^nuget\.config$' | select -ExpandProperty FullName
-        # Get-Content ~/.local/share/nuget.config
+        Get-Content ~/.nuget/NuGet/NuGet.Config
         # dotnet nuget push src/bin/Release/*.nupkg -s github
