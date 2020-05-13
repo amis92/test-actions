@@ -4,10 +4,7 @@ on: [ push ]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
 
@@ -23,3 +20,11 @@ jobs:
     - run: dotnet --info
     - run: dotnet restore -v m
     - run: dotnet build --no-restore -c Release
+    - run: dotnet pack -c Release
+    - shell: pwsh
+      run: |
+        $ghp = "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json".ToLower()
+        dotnet nuget add source $ghp -n github -u ${{ github.actor }} -p ${{ github.token }} --store-password-in-clear-text
+        ls ~/.local/share/
+        Get-Content ~/.local/share/nuget.config
+        # dotnet nuget push src/bin/Release/*.nupkg -s github
