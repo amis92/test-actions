@@ -10,9 +10,12 @@ jobs:
 
     - name: Read .NET Core SDK version
       id: globaljson
-      shell: pwsh
-      run: Write-Host "::set-output name=version::$((Get-Content global.json -Raw | ConvertFrom-Json).sdk.version)"
-
+      uses: Amadevus/pwsh-script@master
+      with:
+        script: |
+          $version = (Get-Content global.json -Raw | ConvertFrom-Json).sdk.version
+          Set-ActionOutput version $version
+          return ('some test result: ' + $github.event.sender.login)
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ steps.globaljson.outputs.version }}
