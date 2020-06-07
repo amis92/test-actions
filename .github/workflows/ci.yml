@@ -15,6 +15,7 @@ jobs:
         script: |
           $version = (Get-Content global.json -Raw | ConvertFrom-Json).sdk.version
           Set-ActionOutput version $version
+          Write-Host "color blue" -ForegroundColor Blue
           return ('some test result: ' + $github.event.sender.login)
     - uses: actions/setup-dotnet@v1
       with:
