@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - shell: pwsh
-      run: Write-Host '::error::some error'
+      run: Write-Host $env:GITHUB_TOKEN
 
     - name: Read .NET Core SDK version
       id: globaljson
