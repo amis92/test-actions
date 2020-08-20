@@ -13,7 +13,7 @@ inputs:
 outputs:
   staging-path:
     description: Path where generated assets were saved.
-    value: ${{ steps.script.outputs.staging-path }}
+    value: ${{ inputs.staging-path }}
 runs:
   using: composite
   steps:

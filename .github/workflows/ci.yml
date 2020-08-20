@@ -11,6 +11,8 @@ jobs:
       run: Write-Host $env:GITHUB_TOKEN
     
     - uses: ./.github/actions/composite
+      id: composite
+    - run: echo ${{ steps.composite.outputs.staging-path }}
 
     - name: Read .NET Core SDK version
       id: globaljson
