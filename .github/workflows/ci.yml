@@ -9,6 +9,8 @@ jobs:
     - uses: actions/checkout@v2
     - shell: pwsh
       run: Write-Host $env:GITHUB_TOKEN
+    
+    - uses: ./.github/actions/composite
 
     - name: Read .NET Core SDK version
       id: globaljson

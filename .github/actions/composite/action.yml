@@ -1,0 +1,25 @@
+name: action name
+author: action author
+description: action description
+inputs:
+  token:
+    description: GitHub auth token to authorize uploading release assets
+    required: false
+    default: ${{ github.token }}
+  staging-path:
+    description: Path where generated assets will be saved (set as output as well).
+    required: false
+    default: ${{ runner.temp }}/assets
+outputs:
+  staging-path:
+    description: Path where generated assets were saved.
+    value: ${{ steps.script.outputs.staging-path }}
+runs:
+  using: composite
+  steps:
+    - run: ${{ github.action_path }}/action.ps1
+      shell: pwsh
+      id: script
+branding:
+  icon: book-open
+  color: blue
