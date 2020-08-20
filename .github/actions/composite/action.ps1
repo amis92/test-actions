@@ -1,3 +1,5 @@
 
 Write-Host "Running composite action"
-Write-Host "::set-output staging-path=$env:INPUT_STAGING_PATH"
+$stagingPath = (Get-ChildItem "Env:INPUT_STAGING-PATH").Value
+Write-Host "Staging path input: $stagingPath"
+Write-Host "::set-output name=staging-path::$stagingPath"
