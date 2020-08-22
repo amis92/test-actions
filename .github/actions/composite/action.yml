@@ -20,6 +20,11 @@ runs:
     - run: ${{ github.action_path }}/action.ps1
       shell: pwsh
       id: script
+    - run: |
+        Write-Host $env:GITHUB_CTX
+      shell: pwsh
+      env:
+        GITHUB_CTX: ${{ toJson(github) }}
 branding:
   icon: book-open
   color: blue
