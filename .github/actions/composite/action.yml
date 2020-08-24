@@ -22,9 +22,11 @@ runs:
       id: script
     - run: |
         Write-Host $env:GITHUB_CTX
+        Write-Host $env:STEPS_CTX
       shell: pwsh
       env:
         GITHUB_CTX: ${{ toJson(github) }}
+        STEPS_CTX: ${{ toJson(steps) }}
 branding:
   icon: book-open
   color: blue
