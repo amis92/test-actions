@@ -23,6 +23,7 @@ runs:
     - run: |
         Write-Host $env:GITHUB_CTX
         Write-Host $env:STEPS_CTX
+        Write-Host '${{ steps.script.outcome }}'
       shell: pwsh
       env:
         GITHUB_CTX: ${{ toJson(github) }}
